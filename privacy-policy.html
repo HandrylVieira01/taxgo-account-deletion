@@ -81,7 +81,7 @@
     <main class="wrap">
       <article class="card">
         <h1>Política de Privacidade do TaxGO</h1>
-        <p class="meta">Vigência: 7 de agosto de 2026</p>
+        <p class="meta">Vigência: 3 de outubro de 2026</p>
         <p>
           Esta Política de Privacidade descreve como o TaxGO trata dados pessoais e outros
           dados relacionados ao uso do aplicativo, da infraestrutura de licenciamento, do teste
@@ -105,14 +105,12 @@
           <h2>2. Quais dados podem ser tratados</h2>
           <p>De acordo com a funcionalidade utilizada, o TaxGO pode tratar dados como:</p>
           <ul>
-            <li>nome, e-mail, telefone e WhatsApp informados em fluxos de licença, teste ou compra;</li>
-            <li>dados de contratação e histórico de compras ou assinaturas;</li>
-            <li>chaves de licença, identificadores técnicos do dispositivo, da instalação, da sessão e do suporte ID;</li>
-            <li>versão do app, canal de distribuição, modelo do aparelho, versão do Android, idioma, permissões e estado operacional necessário para diagnóstico;</li>
-            <li>logs de acesso e uso, endereço IP, eventos de suporte, telemetria, falhas, desempenho e diagnóstico;</li>
-            <li>dados lidos da tela por acessibilidade e OCR quando o usuário habilita o serviço, limitados ao que é necessário para detectar ofertas, calcular ganhos, mostrar alertas e diagnosticar estabilidade;</li>
-            <li>dados de geolocalização quando a funcionalidade correspondente estiver habilitada;</li>
-            <li>histórico operacional, configurações, imagens, vídeos, áudios, arquivos e demais conteúdos fornecidos ou gerados pelo uso da plataforma.</li>
+            <li>nome, e-mail e WhatsApp que o usuário escolher informar no cadastro do teste ou do acesso;</li>
+            <li>identificador do aparelho e identificador de suporte, usados para vincular o acesso a um único aparelho, proteger a licença e atender solicitações;</li>
+            <li>modelo do aparelho, versão do Android e versão do TaxGO, enviados junto a solicitações de acesso para compatibilidade e suporte;</li>
+            <li>dados da assinatura feita pelo Google Play, como produto, situação da compra e identificadores técnicos necessários para validar e vincular a licença;</li>
+            <li>token de notificação do Firebase, se o serviço de notificações estiver disponível no aparelho, para direcionar mensagens de status da licença;</li>
+            <li>dados técnicos mínimos das solicitações ao servidor, processados pela infraestrutura usada para autenticação, segurança e funcionamento do serviço.</li>
           </ul>
         </section>
 
@@ -121,11 +119,11 @@
           <p>Os dados podem ser usados para:</p>
           <ul>
             <li>criar, validar, manter e proteger licenças, testes gratuitos e assinaturas;</li>
-            <li>executar recursos do app, inclusive funcionalidades dependentes de permissões do dispositivo;</li>
+            <li>executar recursos do app, inclusive detectar uma oferta, calcular rota e ganhos e mostrar o card solicitado pelo usuário;</li>
             <li>prestar suporte, responder solicitações e manter comunicações sobre o serviço;</li>
             <li>prevenir fraude, abuso, uso indevido e incidentes de segurança;</li>
             <li>realizar cobrança, faturamento, validação de compra e conciliação comercial;</li>
-            <li>medir desempenho, diagnosticar falhas e aprimorar estabilidade e funcionalidades;</li>
+            <li>validar compras e proteger o acesso contra fraude, compartilhamento indevido ou uso em aparelho diferente;</li>
             <li>cumprir obrigações legais, regulatórias e exercer direitos em processos administrativos, arbitrais ou judiciais.</li>
           </ul>
         </section>
@@ -145,9 +143,9 @@
           <h2>5. Compartilhamento de dados</h2>
           <p>Os dados podem ser compartilhados, quando necessário e dentro da finalidade aplicável, com:</p>
           <ul>
-            <li>provedores de hospedagem, infraestrutura, armazenamento, analytics e cloud;</li>
-            <li>intermediadores e processadores de pagamento, cobrança, checkout e assinatura;</li>
-            <li>serviços de notificação, mensageria, geolocalização, atualização e suporte;</li>
+            <li>Supabase, que fornece a infraestrutura de servidor usada para cadastro, licença e suporte;</li>
+            <li>Google Play, para processar compras e validar assinaturas, e Google Play Integrity, para verificar a integridade das solicitações protegidas;</li>
+            <li>Firebase Cloud Messaging, quando habilitado, para entregar notificações de status da licença;</li>
             <li>autoridades públicas ou terceiros quando houver obrigação legal, ordem competente ou necessidade de proteção de direitos.</li>
           </ul>
           <p>
@@ -156,40 +154,42 @@
         </section>
 
         <section class="section">
-          <h2>6. Marketing e remarketing</h2>
+          <h2>6. Análise e publicidade</h2>
           <p>
-            O TaxGO pode tratar dados cadastrais, de contato e de uso para comunicações sobre
-            o serviço, mensuração de conversões, desempenho de campanhas, remarketing e
-            gerenciamento de audiências, quando aplicável e juridicamente permitido. Quando a
-            legislação exigir, esses tratamentos ocorrerão com consentimento ou com mecanismo de
-            opt-out adequado.
+            Na versão comercial distribuída pela Google Play, o TaxGO mantém desativados o
+            envio de eventos de marketing, analytics e relatórios automáticos de falhas. Nome,
+            e-mail e WhatsApp não são enviados a plataformas de publicidade para remarketing.
           </p>
         </section>
 
         <section class="section">
           <h2>7. Acessibilidade, OCR e dados de tela</h2>
           <p>
-            Quando o usuário ativa o serviço de acessibilidade, o TaxGO pode ler conteúdo
-            visível na tela e metadados de janelas de apps compatíveis para identificar ofertas,
-            calcular ganhos, exibir alertas, manter o painel operacional e gerar diagnóstico de
-            falhas. A versão distribuída pela Google Play Store não executa toques automáticos por
-            meio da Accessibility API.
+            Quando o usuário aceita a explicação dentro do TaxGO e ativa o serviço de
+            acessibilidade do Android, o app procura os textos “Aceitar”, “Recusar” ou “Em
+            disputa” na tela do Taxi Rio. Ao encontrar um deles, faz uma captura temporária para
+            extrair localmente os dados necessários para calcular a rota e os ganhos. A captura,
+            o texto da tela, os endereços e os valores da corrida são processados no aparelho e
+            não são enviados pelo serviço de acessibilidade à versão comercial distribuída pela
+            Google Play. A captura é descartada após o processamento.
           </p>
           <p>
-            O app não usa a acessibilidade para ler senhas, mensagens privadas, dados bancários
-            ou conteúdo fora do escopo operacional informado ao usuário. Eventos técnicos
-            derivados desse processamento podem ser associados a um suporte ID para investigação
-            de problemas complexos.
+            O TaxGO usa a acessibilidade apenas para a função explicada acima. O OCR e o cálculo
+            da rota são locais; o app não usa esse fluxo para ler senhas, mensagens privadas ou
+            dados bancários, nem executa toques automáticos na versão distribuída pela Google
+            Play. O envio automático de diagnósticos de corridas está desativado nessa versão.
           </p>
         </section>
 
         <section class="section">
-          <h2>8. Câmera, microfone, arquivos e localização</h2>
+          <h2>8. Permissões do aparelho</h2>
           <p>
-            Recursos de gravação, mídia e localização dependem de permissões do Android e de
-            ação do usuário. Quando usados, podem gerar imagens, vídeos, áudio, metadados de
-            arquivo, dados de localização e registros técnicos necessários para funcionamento,
-            armazenamento local, processamento, suporte e diagnóstico.
+            A acessibilidade e a exibição sobre outros apps só funcionam depois de o usuário
+            conceder essas permissões nas configurações do Android. O TaxGO não solicita
+            localização, câmera, microfone ou acesso geral a arquivos para calcular as corridas.
+            Notificações podem ser solicitadas para avisos sobre a licença. Na versão comercial,
+            o TaxGO não toca na tela nem aceita corridas automaticamente; a decisão de aceitar é
+            do motorista no Taxi Rio.
           </p>
         </section>
 
